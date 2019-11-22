@@ -9,8 +9,7 @@ import java.util.Arrays;
  * Логика игры
  *
  * @author Petr Arsentev (parsentev@yandex.ru), Natalia Kirdis (kirdisnatalia@gmail.com)
- *
- * @version 1.0
+ * @version 1.1
  * @since 21.11.2019
  */
 public class Logic {
@@ -78,12 +77,12 @@ public class Logic {
     this.index = 0;
   }
 
-    /**
-     * Функция ищет ячайку
-     *
-     * @param cell - ячейка
-     * @return возвращает индекс искомой ячейки
-     * */
+  /**
+   * Функция ищет ячайку
+   *
+   * @param cell - ячейка
+   * @return возвращает индекс искомой ячейки
+   */
   private int findBy(Cell cell) {
     int rst = -1;
     for (int index = 0; index != this.figures.length; index++) {
@@ -104,10 +103,10 @@ public class Logic {
     int[][] table = this.convert();
     boolean result = false;
 
-    for (int row = 0; row != table.length; row++) {
+    for (int row = 0; row != table.length && !result; row++) {
       int cells = 0;
       int rows = 0;
-      for (int cell = 0; cell !=  table.length; cell++) {
+      for (int cell = 0; cell != table.length; cell++) {
         if (table[row][cell] == 1) {
           rows++;
         }
@@ -115,19 +114,17 @@ public class Logic {
           cells++;
         }
       }
-      if (cells == table.length || rows == table.length) {
-        result = true;
-      }
+      result = cells == table.length || rows == table.length;
     }
 
     return result;
   }
 
-    /**
-     * Функция проверки на победу
-     *
-     * @return преобразовывает поле в двумерный массив int[][]. Записывается значение 1, если в ячейке элемент пазла(круг).
-     */
+  /**
+   * Функция проверки на победу
+   *
+   * @return преобразовывает поле в двумерный массив int[][]. Записывается значение 1, если в ячейке элемент пазла(круг).
+   */
   public int[][] convert() {
     int[][] table = new int[this.size][this.size];
     for (int row = 0; row != table.length; row++) {

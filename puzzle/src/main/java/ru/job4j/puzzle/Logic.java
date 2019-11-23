@@ -113,8 +113,8 @@ public class Logic {
         if (table[cell][row] == 1) {
           cells++;
         }
+        result = cells == table.length || rows == table.length;
       }
-      result = cells == table.length || rows == table.length;
     }
 
     return result;

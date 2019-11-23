@@ -9,7 +9,7 @@ import java.util.Arrays;
  * Логика игры
  *
  * @author Petr Arsentev (parsentev@yandex.ru), Natalia Kirdis (kirdisnatalia@gmail.com)
- * @version 1.1
+ * @version 1.2
  * @since 21.11.2019
  */
 public class Logic {
@@ -113,7 +113,11 @@ public class Logic {
         if (table[cell][row] == 1) {
           cells++;
         }
-        result = cells == table.length || rows == table.length;
+      }
+      result = cells == table.length || rows == table.length;
+
+      if (result) {
+        break;
       }
     }
 
